@@ -1,0 +1,13 @@
+
+<div style="margin-left: -10px; width:100%; padding: 20px; display: flex; align-items: center; justify-content: center;">
+    <div *ngIf="!showWelcome">
+        <input class="inputTextBox" type="text" id="nameInput" [(ngModel)]="playerName" placeholder="Enter Your Name"/>&nbsp;
+        <input class="inputBtn" type="button" value="Next" (click)="start()"/>
+    </div>
+    <div style="width:30%; display: flex;align-items: center; justify-content: center;" *ngIf="showWelcome">
+        <h1 class="welcomeMsg" style="text-align: center;">
+            Welcome {{playerName}}
+        </h1>&nbsp;
+        <button class="inputBtn" [routerLink]="['/game']">Start Toss</button>
+    </div>
+</div>

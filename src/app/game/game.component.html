@@ -1,0 +1,72 @@
+<div *ngIf="showToss">
+    <toss (tossCompleted)="onTossCompleted($event)"></toss>
+</div>
+<div class="container" *ngIf="!showToss">
+    <div *ngIf="playerWon && !gameStarted">
+        <h2>Choose Bat or Bowl:</h2>
+        <button style="background-color: darkgreen;" class="inputBtn" (click)="chooseBatorBowl(0)">Bat</button> &nbsp;&nbsp;
+        <button style="background-color: rgb(255, 162, 0);" class="inputBtn" (click)="chooseBatorBowl(1)">Bowl</button>
+    </div>
+    <div *ngIf="!playerWon && !gameStarted">
+        <h1 style="color:lightgreen">Computer has chosen to <b style="color:rgb(250, 83, 83)">{{computerChoice}}</b></h1>
+        <br><br>
+        <button class="inputBtn" (click)="gameStarted = true">Ready to {{playerChoice}}</button>
+    </div>
+    <div style="width: 100%; background-color: rgba(0, 0, 0, 0.298); padding: 30px; color: azure; font-size: x-large;" *ngIf="gameStarted">
+        <div *ngIf="playerChoice == 'Bat'">
+            <p>Batting : <b style="color: darkkhaki;">You</b></p>
+            <p>Bowling : Computer</p>
+            <h3 style="color:aqua;" *ngIf="innings2">Target : <b>{{target}}</b></h3>
+            <p>Select Runs: </p>
+            <input type="radio" value=1 name="run-group" [(ngModel)]="batsmanRuns">1&nbsp;
+            <input type="radio" value=2 name="run-group" [(ngModel)]="batsmanRuns">2&nbsp;
+            <input type="radio" value=3 name="run-group" [(ngModel)]="batsmanRuns">3&nbsp;
+            <input type="radio" value=4 name="run-group" [(ngModel)]="batsmanRuns">4&nbsp;
+            <input type="radio" value=5 name="run-group" [(ngModel)]="batsmanRuns">5&nbsp;
+            <input type="radio" value=6 name="run-group" [(ngModel)]="batsmanRuns" [checked]="true">6&nbsp;&nbsp;
+            <button class="inputBtn" *ngIf="showHit" (click)="hit()">Hit</button>
+            <p>You : {{batsmanRuns}}</p>
+            <p>Computer : {{bowlerRuns}} </p>
+            <p><b>SCORE : {{playerScore}} </b></p>
+            <div *ngIf="isplayerOut && innings1">
+                <h3 style="background-color: brown; color: aliceblue; padding: 10px;">OUT - {{playerScore + 1}} to Win</h3>
+                <button class="inputBtn" class="inputBtn" (click)="startBowling()">Start Bowling</button>
+            </div>
+            <div *ngIf="isplayerOut && innings2">
+                <h3 style="background-color: brown; color: aliceblue; padding: 10px;">OUT</h3>
+            </div>
+            <div *ngIf="innings2 && getResults(playerScore, target, 0)">
+                <h1 style="background-color: green; color: aliceblue;">{{result}}</h1>
+                <button class="inputBtn" [routerLink]="['']">Rematch</button>
+            </div>
+            
+        </div>
+        <div *ngIf="playerChoice == 'Bowl'">
+            <p>Batting : Computer</p>
+            <p>Bowling : <b style="color: darkkhaki;">You</b></p>
+            <h3 style="color:aqua;" *ngIf="innings2">Target : <b>{{target}}</b></h3>
+            <p>Guess Opponent's Runs:</p>
+            <input type="radio" value=1 name="run-group" [(ngModel)]="bowlerRuns">1&nbsp;
+            <input type="radio" value=2 name="run-group" [(ngModel)]="bowlerRuns">2&nbsp;
+            <input type="radio" value=3 name="run-group" [(ngModel)]="bowlerRuns">3&nbsp;
+            <input type="radio" value=4 name="run-group" [(ngModel)]="bowlerRuns">4&nbsp;
+            <input type="radio" value=5 name="run-group" [(ngModel)]="bowlerRuns">5&nbsp;
+            <input type="radio" value=6 name="run-group" [(ngModel)]="bowlerRuns" [checked]="true">6&nbsp;&nbsp;
+            <button class="inputBtn"     *ngIf="showBowl" (click)="bowl()">Bowl</button>
+            <p>You : {{bowlerRuns}}</p>
+            <p>Computer : {{batsmanRuns}}</p>
+            <p><b>OPPONENT'S SCORE : {{computerScore}}</b></p>
+            <div *ngIf="isComputerOut && innings1">
+                <h3 style="background-color: brown; color: aliceblue;padding: 10px; ">OUT - Score {{computerScore + 1}} to Win</h3>
+                <button class="inputBtn" (click)="startBatting()">Start Batting</button>
+            </div>
+            <div *ngIf="isComputerOut && innings2">
+                <h3 style="background-color: brown; color: aliceblue; padding: 10px; ">OUT</h3>
+            </div>
+            <div *ngIf="innings2 && getResults(computerScore, target, 1)">
+                <h1 style="background-color: green; color: aliceblue;">{{result}}</h1>
+                <button class="inputBtn" [routerLink]="['']">Rematch</button>
+            </div>
+        </div>
+    </div>
+</div>

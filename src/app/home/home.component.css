@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono:400');
+.inputTextBox{
+    
+    border-radius: 5px;
+    background: rgb(249, 250, 250);
+    border: 1px solid rgb(181, 189, 196);
+    font-size: 16px;
+    height: 40px;
+    line-height: 24px;
+    padding: 7px 8px;
+    color: rgb(8, 9, 10);
+    box-shadow: none;
+    :focus{
+        background-color: #fff;
+        border-color: #3b49df;
+        box-shadow: 1px 1px 0 #3b49df;
+    }
+    
+}
+
+.inputBtn{
+    height: 60px;
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    background: #000000;
+    color: #FFFFFF;
+    border-radius: 8px;
+    padding: 14px 24px 16px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.welcomeMsg{
+    animation: glitch 1s linear infinite;
+    font-family: 'Fira Mono', monospace;
+    font-size: 3rem;
+    color: rgba(104, 255, 169, 0.791);
+  }
+  

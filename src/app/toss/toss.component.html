@@ -1,0 +1,32 @@
+<div style="background-color: rgba(0, 0, 0, 0.154); width:100%; display: flex; align-items: center; justify-content: center;">
+    <div *ngIf="!optionSelected" class="container">
+        
+        <h2>Choose Head or Tails:</h2>
+        
+    <ul>
+    <li>
+        <input id="H" value="Heads" type="radio" name="toss-group" [(ngModel)] = "choice" (click)="btnShow = true" />
+        <label for="H">Heads</label>
+        
+        <div class="check"></div>
+    </li>
+    
+    <li>
+        <input id="T" value="Tails" type="radio" name="toss-group" [(ngModel)] = "choice" (click)="btnShow = true"/>
+        <label for="T">Tails</label>
+        
+        <div class="check"><div class="inside"></div></div>
+    </li>
+    </ul>
+    <button class="inputBtn" *ngIf="btnShow" (click)="toss()">Finalize!</button>
+    </div>
+
+    <div style="color: aliceblue;" class="container" *ngIf="optionSelected">
+        <h1>Your Call : <span style="color: rgb(255, 242, 60);">{{choice}}</span> </h1>
+        <h1>Toss : {{result}}</h1>
+        <img src={{url}} width="150px" height="150px">
+        <h1>Toss Winner : {{winner}}</h1>
+        <button class="inputBtn" (click)="start()">Start Game</button>  
+    </div>
+</div>
+
