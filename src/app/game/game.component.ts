@@ -33,7 +33,6 @@ export class GameComponent {
   
   getResults(score:number, target:number, type:number){
     if(type == 0){
-      console.log("Working 0");
       if(score >= target){
         this.result = 'You Won!'
         this.showHit = false;
@@ -47,7 +46,6 @@ export class GameComponent {
       }
     }
     if(type == 1){
-      console.log("Working 1");
       if(score >= target){
         this.result = 'Computer Won!'
         this.showBowl = false

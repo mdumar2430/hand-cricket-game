@@ -14,7 +14,6 @@ export class HomeComponent {
   playerName = ''
   showWelcome=false
   start(){
-    console.log(this.playerName);
     this.showWelcome=true;
   }
 }

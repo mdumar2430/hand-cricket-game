@@ -15,8 +15,8 @@ export class TossComponent {
   btnShow = false
   result = ''
   winner = ''
-  tails = '../../assets/tails.png'
-  heads = '../../assets/heads.png'
+  tailsUrl = '../../assets/tails.png'
+  headsUrl = '../../assets/heads.png'
   url = ''
   start(){
     this.tossCompleted.emit(this.winner);
@@ -26,10 +26,9 @@ export class TossComponent {
     this.optionSelected = true
     let count = Math.floor(Math.random() * 20) + 5;
     let counter = 0
-    console.log(count);
     const timer = setInterval(() => {
       this.result = counter % 2 == 0 ? 'Heads' : "Tails"
-      this.url = counter % 2 == 0 ? this.heads : this.tails
+      this.url = counter % 2 == 0 ? this.headsUrl : this.tailsUrl
       counter++;
       if (count === counter) {
         if(this.choice == this.result){
