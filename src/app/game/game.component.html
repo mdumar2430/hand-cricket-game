@@ -37,7 +37,7 @@
             </div>
             <div *ngIf="innings2 && getResults(playerScore, target, 0)">
                 <h1 style="background-color: green; color: aliceblue;">{{result}}</h1>
-                <button class="inputBtn" [routerLink]="['../game']">Rematch</button>
+                <button class="inputBtn" [routerLink]="['']">Play Again</button>
             </div>
             
         </div>
@@ -65,7 +65,7 @@
             </div>
             <div *ngIf="innings2 && getResults(computerScore, target, 1)">
                 <h1 style="background-color: green; color: aliceblue;">{{result}}</h1>
-                <button class="inputBtn" [routerLink]="['../game']">Rematch</button>
+                <button class="inputBtn" [routerLink]="['']">Play Again</button>
             </div>
         </div>
     </div>
